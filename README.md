@@ -1,7 +1,7 @@
-# Docker for altair GraphQL 
+# Docker for Graphql Playground
 ![Pulls](https://img.shields.io/docker/pulls/maxifom/graphql-playground-docker.svg)
 
-Original repo: https://github.com/graphql/graphql-playground/tree/v1.8.10
+Original repo: https://github.com/graphql/graphql-playground/
 
 Environment variables:
 
