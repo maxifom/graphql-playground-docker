@@ -1,6 +1,6 @@
 FROM node:15.12.0-alpine3.13 as builder
 WORKDIR /usr/src/app
-RUN apk add --no-cache git python3
+RUN apk add --no-cache git python3 make
 RUN git clone --depth 1 https://github.com/graphql/graphql-playground.git /usr/src/app
 RUN cd packages/graphql-playground-react/ && yarn && yarn build
 
