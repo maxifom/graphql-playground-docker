@@ -5,6 +5,6 @@ RUN git clone --depth 1 https://github.com/graphql/graphql-playground.git /usr/s
 RUN cd packages/graphql-playground-react/ && yarn && yarn build
 
 FROM nginx:stable-alpine
-COPY --from=builder /usr/src/app/packages/graphql-playground-react/dist /usr/share/nginx/html
+COPY --from=builder /usr/src/app/packages/graphql-playground-react/build /usr/share/nginx/html
 COPY nginx-graphql-playground.conf.template /etc/nginx/templates/
 RUN rm /etc/nginx/conf.d/default.conf
