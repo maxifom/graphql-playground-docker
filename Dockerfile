@@ -1,10 +1,9 @@
-FROM node:15.12.0-alpine3.13 as builder
-WORKDIR /usr/src/app
-RUN apk add --no-cache git python3 make g++
-RUN git clone --depth 1 https://github.com/graphql/graphql-playground.git /usr/src/app
-RUN cd packages/graphql-playground-react/ && yarn && yarn build
+FROM alpine as builder
+WORKDIR /
+RUN apk add --no-cache wget 
+RUN wget https://raw.githubusercontent.com/graphql/graphql-playground/master/packages/graphql-playground-html/withAnimation.html
 
 FROM nginx:stable-alpine
-COPY --from=builder /usr/src/app/packages/graphql-playground-react/build /usr/share/nginx/html
+COPY --from=builder /withAnimation.html /usr/share/nginx/html/index.html
 COPY nginx-graphql-playground.conf.template /etc/nginx/templates/
 RUN rm /etc/nginx/conf.d/default.conf
